@@ -62,26 +62,25 @@ print(pair_mulitply(ls_3))
 def float_list_create():
     a = int(input("Введите длину списка: "))
     new_ls = []
-    for i in range(0, a):
+    for i in range(a):
         new_ls.append(float(input(f"Введите значение {i} элемента: ")))
     return new_ls
 
 def point_value(float_ls):
     new_ls = []
 
-    for elem in range(0, len(float_ls)):
-        num = float_ls[elem] - int(float_ls[elem])
+    for elem in float_ls:
+        num = elem - int(elem)
         new_ls.append(num)
     
     max = new_ls[0]
-    min = max
+    min = new_ls[0]
 
-    for elem in range(0, len(new_ls) - 1):
-        num = new_ls[elem]
-        if num > max:
-            max = num
-        elif num < min:
-            min = num
+    for elem in new_ls:
+        if elem > max:
+            max = elem
+        elif elem < min:
+            min = elem
     return max-min
 
 
@@ -89,7 +88,8 @@ ls = float_list_create()
 print(ls)
 print(f"Разница между максимальным и минимальным значением дробной части {point_value(ls)}")
 
-
+new_list = [round(i % 1, 2) for i in ls if i % 1 != 0]  # данный код выполняет точно такую же функцию
+print(max(new_list)-min(new_list))
 
 # 4.
 # Напишите программу, которая будет преобразовывать десятичное число в двоичное.
